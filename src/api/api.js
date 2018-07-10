@@ -4,6 +4,7 @@
 
 const router = require('../lib/router.js');
 
+
 router.get('/', (req,res)=>{
   res.statusCode = 200;
   res.statusMessage = 'ok';
@@ -12,21 +13,101 @@ router.get('/', (req,res)=>{
   res.end();
 });
 
-router.get('/api/v1/max', (req,res)=>{
-  res.statusCode = 200;
-  res.statusMessage = req.query.id ? `ID: ${req.query.id}` : 'OK';
-  // res.write(JSON.stringify(req.body));
-  res.end();
+router.post('/data', (req,res)=>{
+
+  if(req.query.id) {
+    res.statusCode = 200;
+    res.statusMessage = 'ok';
+    res.write(JSON.stringify(req.body));
+    res.end();
+  }
+  // } else if(!req.body){
+  //   res.statusCode = 400;
+  //   res.write('bad request');
+  //   res.end();
+  // } else {
+  //   res.statusCode = 404;
+  //   res.write('not found');
+  //   res.end();
+  // }
+});
+
+router.get('/api/v1/max', (req,res) => {
+  // console.log('GET QUERY ID:',req.query.id);
+  // console.log(req.url.query.id);
+
+  if(req.query.id) {
+    res.statusCode = 200;
+    res.statusMessage = req.query.id ? `ID: ${req.query.id}` : 'OK';
+    res.write(`ID: ${req.query.id}`);
+    res.end();
+  
+  // you have to end the res-req cycle or itll keep spinning
+
+  // if(req.query.id) {
+  //   res.statusCode = 200;
+  //   res.statusMessage = req.query.id ? `ID: ${req.query.id}` : 'OK';
+  //   res.end();
+  // } else if(!req.query.id){
+  //   res.statusCode = 404;
+  //   res.write('not found');
+  //   res.end();
+  } else {
+    res.statusCode = 400;
+    res.write('bad request');
+    res.end();
+  }
 });
 
 router.post('/api/v1/max', (req,res)=>{
-  res.statusCode = 200;
-  res.statusMessage = 'ok';
-  let name = req.query.name || '';
-  res.write(JSON.stringify(req.body));
-  res.end();
+
+  if(req.query.id) {
+    res.statusCode = 200;
+    res.statusMessage = 'ok';
+    res.write(JSON.stringify(req.body));
+    res.end();
+
+  } else if(!req.body){
+    res.statusCode = 400;
+    res.write('bad request');
+    res.end();
+
+  }
+  // else {
+  //   res.statusCode = 404;
+  //   res.write('not found');
+  //   res.end();
+  // }
 });
 
-// make a new route
+// router.put('/api/v1/max', (req,res)=>{
+
+//   // if(req.url.query.id) {
+//   if(req.query.id) {
+
+//     res.statusCode = 200;
+//     res.statusMessage = 'ok';
+//     res.write(JSON.stringify(req.body));
+//     res.end();
+//   } else {
+//     res.statusCode = 404;
+//     res.statusMessage = 'no ID provided';
+//   }
+// });
+
+// router.delete('/api/v1/max', (req,res)=>{
+
+//   // if(req.url.query.id) {
+//   if(req.query.id) {
+
+//     res.statusCode = 200;
+//     res.statusMessage = 'ok';
+//     res.write(`ID: ${req.query.id} was deleted`);
+//     res.end();
+//   } else {
+//     res.statusCode = 404;
+//     res.statusMessage = 'no ID provided';
+//   }
+// });
 
 module.exports = {};

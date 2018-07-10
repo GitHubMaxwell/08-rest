@@ -7,8 +7,7 @@
 //start and stop
 'use strict';
 
-const http = require('http');
-//require in http to 
+let http = require('http');
 
 //the modules we make
 const router = require('./lib/router.js');
