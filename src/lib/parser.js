@@ -47,12 +47,16 @@ module.exports = (req) => {
       // console.log('CHECKING THE GETs GOING HERE',req.method);
       resolve(req);
     }
-    console.log('BODY before JSON parse', req.query);
+    console.log('parser.js', req.method);
     let text = '';
   
     req.on('data', (buffer) => {
       text += buffer.toString();
     });
+
+    // req.on('api/v1/max', (buffer) => {
+    //   text += buffer.toString();
+    // });
   
     req.on('end', () => {
       try{

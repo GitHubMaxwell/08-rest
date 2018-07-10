@@ -80,34 +80,37 @@ router.post('/api/v1/max', (req,res)=>{
   // }
 });
 
-// router.put('/api/v1/max', (req,res)=>{
+router.put('/api/v1/max', (req,res)=>{
 
-//   // if(req.url.query.id) {
-//   if(req.query.id) {
+  // if(req.url.query.id) {
+  if(req.query.id) {
 
-//     res.statusCode = 200;
-//     res.statusMessage = 'ok';
-//     res.write(JSON.stringify(req.body));
-//     res.end();
-//   } else {
-//     res.statusCode = 404;
-//     res.statusMessage = 'no ID provided';
-//   }
-// });
+    res.statusCode = 200;
+    res.statusMessage = 'ok';
+    res.write(JSON.stringify(req.body));
+    res.end();
+  } else {
+    res.statusCode = 404;
+    res.statusMessage = 'no ID provided';
+    res.end();
 
-// router.delete('/api/v1/max', (req,res)=>{
+  }
+});
 
-//   // if(req.url.query.id) {
-//   if(req.query.id) {
+router.delete('/api/v1/max', (req,res)=>{
 
-//     res.statusCode = 200;
-//     res.statusMessage = 'ok';
-//     res.write(`ID: ${req.query.id} was deleted`);
-//     res.end();
-//   } else {
-//     res.statusCode = 404;
-//     res.statusMessage = 'no ID provided';
-//   }
-// });
+  // if(req.url.query.id) {
+  if(req.query.id) {
+    res.statusCode = 200;
+    res.statusMessage = 'ok';
+    res.write(`ID: ${req.query.id} was deleted`);
+    res.end();
+  } else {
+    res.statusCode = 404;
+    res.statusMessage = 'no ID provided';
+    res.end();
+
+  }
+});
 
 module.exports = {};

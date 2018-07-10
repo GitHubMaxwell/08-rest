@@ -12,7 +12,8 @@ let http = require('http');
 //the modules we make
 const router = require('./lib/router.js');
 //router will handling the custom creation of routes and passing them back
-const api = require('./api/api.js');
+
+// const api = require('./api/api.js');
 //why is api being required in here?
 
 let ifRunning = false;

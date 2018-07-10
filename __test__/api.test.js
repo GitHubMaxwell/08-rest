@@ -6,7 +6,7 @@ const app = require('../src/app.js');
 describe('API MODULE', () => {
 
   beforeAll( () => {
-    app.start(3001);
+    app.start(3002);
   });
   
   afterAll( () => {
@@ -30,6 +30,7 @@ describe('API MODULE', () => {
     // !(req.query.url.id)
     // res.write bad request
     // res.status 400
+
     return superagent.get('/api/v1/max')
     //   .then(res => {
     //     // console.log(res);
@@ -52,7 +53,7 @@ describe('API MODULE', () => {
       .then(res => {
         // console.log(res);
         expect(res.statusCode).toEqual(200);
-        expect(res.body).toBeDefined();
+        // expect(res.body).toBeDefined();
       });
   
   });
@@ -81,6 +82,16 @@ describe('API MODULE', () => {
         expect(res.statusCode).toEqual(200);
         expect(res.body).toBeDefined();
       });
-  
+  });
+
+  it('DELETE: test 200, it should respond with the body content for a post request with a valid body', () => {
+    // res.status 200
+    // res.send(req.body)
+    return superagent.delete('/api/v1/max?id=max')
+      .then(res => {
+        // console.log(res.body);
+        expect(res.statusCode).toEqual(200);
+        expect(res.body).toEqual('ID: max was deleted');
+      });
   });
 });
