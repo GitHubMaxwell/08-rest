@@ -43,11 +43,9 @@ module.exports = (req) => {
        */
 
     if(! req.method.match(/POST|PUT|PATCH/) ) {
-      //if the request method DOESNT equal onf of these methods resolve it with the url and query already being parsed out
-      // console.log('CHECKING THE GETs GOING HERE',req.method);
       resolve(req);
     }
-    console.log('parser.js', req.method);
+    // console.log('parser.js', req.method);
     let text = '';
   
     req.on('data', (buffer) => {
@@ -61,8 +59,8 @@ module.exports = (req) => {
     req.on('end', () => {
       try{
         req.body = JSON.parse(text);
+        // console.log(typeof req.body);
         resolve(req);
-        // console.log('BODY after JSON parse', req.body);
       }
       catch(err) { reject(err); }
     });

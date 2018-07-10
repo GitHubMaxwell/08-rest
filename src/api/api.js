@@ -1,5 +1,3 @@
-//requires in router
-//router.get('/', (req,res))
 'use strict';
 
 const router = require('../lib/router.js');
@@ -33,8 +31,6 @@ router.post('/data', (req,res)=>{
 });
 
 router.get('/api/v1/max', (req,res) => {
-  // console.log('GET QUERY ID:',req.query.id);
-  // console.log(req.url.query.id);
 
   if(req.query.id) {
     res.statusCode = 200;
@@ -44,10 +40,6 @@ router.get('/api/v1/max', (req,res) => {
   
   // you have to end the res-req cycle or itll keep spinning
 
-  // if(req.query.id) {
-  //   res.statusCode = 200;
-  //   res.statusMessage = req.query.id ? `ID: ${req.query.id}` : 'OK';
-  //   res.end();
   // } else if(!req.query.id){
   //   res.statusCode = 404;
   //   res.write('not found');
@@ -73,16 +65,10 @@ router.post('/api/v1/max', (req,res)=>{
     res.end();
 
   }
-  // else {
-  //   res.statusCode = 404;
-  //   res.write('not found');
-  //   res.end();
-  // }
 });
 
 router.put('/api/v1/max', (req,res)=>{
 
-  // if(req.url.query.id) {
   if(req.query.id) {
 
     res.statusCode = 200;
@@ -99,7 +85,6 @@ router.put('/api/v1/max', (req,res)=>{
 
 router.delete('/api/v1/max', (req,res)=>{
 
-  // if(req.url.query.id) {
   if(req.query.id) {
     res.statusCode = 200;
     res.statusMessage = 'ok';
