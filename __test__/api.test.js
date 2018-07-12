@@ -6,7 +6,7 @@ const app = require('../src/app.js');
 describe('API MODULE', () => {
 
   beforeAll( () => {
-    app.start(8080);
+    app.start(3002);
   });
   
   afterAll( () => {
@@ -15,10 +15,12 @@ describe('API MODULE', () => {
   
   it('GET: test 404, it should respond with not found for valid requests made with an id that was not found', () => {
 
-    return superagent.get('/api/v1/max')
+    return superagent.get('http://localhost:3002/api/v1/max')
       .catch(err => {
-        console.log(err);
-        expect(err.statusCode).toEqual(404);
+        // console.log(err);
+        // expect(err).toEqual({});
+        console.log(err.message);
+        expect(err.status).toEqual(400);
         expect(err.statusMessage).toEqual('not found');
       });
   
@@ -33,7 +35,7 @@ describe('API MODULE', () => {
     //     expect(res.body).toBeDefined();
     //   })
       .catch(err => {
-        console.log(err);
+        // console.log(err);
         expect(err.statusCode).toEqual(400);
         expect(err.statusMessage).toEqual('bad request');
       });
@@ -44,12 +46,12 @@ describe('API MODULE', () => {
 
     return superagent.get('/api/v1/max?id=max')
       .then(res => {
-        console.log(res);
+        // console.log(res);
         expect(res.statusCode).toEqual(200);
         // expect(res.body).toBeDefined();
       })
       .catch(err => {
-        console.log(err);
+        // console.log(err);
         expect(err.statusCode).toEqual(400);
         expect(err.statusMessage).toEqual('bad request');
       });
@@ -59,7 +61,7 @@ describe('API MODULE', () => {
   
   it('POST: test 400, it should respond with bad request if no request body was provided or the body was invalid', () => {
 
-    return superagent.post('/api/v1/max')
+    return superagent.post('http://localhost:3002/api/v1/max')
     //   .send()
       .catch(err => {
         // console.log(err);

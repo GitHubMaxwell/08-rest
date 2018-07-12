@@ -29,7 +29,7 @@ router.route = (req,res) => {
   //error might be in the parser
 
     .then(req => {
-      console.log(req);
+      // console.log(req);
       // Determine which of the things in the routing table matches us
       // i.e. if the request is for http://localhost/foo
       // We would look for this:  router.routes.GET['/foo'] and then run the function that's assigned
