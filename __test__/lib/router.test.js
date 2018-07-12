@@ -2,7 +2,8 @@
 
 let router = require('../../src/lib/router.js');
 
-describe('Router', () => {
+// console.log(router.get);
+xdescribe('Router', () => {
 
   it('registers routes of multiple types', () => {
     router.get('/', () => true);
@@ -22,6 +23,7 @@ describe('Router', () => {
     router.get('/a', () => true);
     router.get('/b', () => true);
     router.get('/c', () => true);
+    // console.log(Object.keys(router.routes.GET).length);
     expect( Object.keys(router.routes.GET).length ).toEqual(3);
   });
 

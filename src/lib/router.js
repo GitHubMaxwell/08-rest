@@ -18,18 +18,18 @@ methods.forEach( (method) => {
   router[method.toLowerCase()] = function(path, callback) {
     router.routes[method][path] = callback;
   };
-  
+  // console.log(router.routes);
 });
 
 //////////////////////////////////////////////////////
 router.route = (req,res) => { 
   //called by the httpServer(router.route)
-//////////////////////////////////////////////////////
 
   return parser(req)
   //error might be in the parser
 
     .then(req => {
+      // console.log(req);
       // Determine which of the things in the routing table matches us
       // i.e. if the request is for http://localhost/foo
       // We would look for this:  router.routes.GET['/foo'] and then run the function that's assigned
@@ -41,13 +41,10 @@ router.route = (req,res) => {
       }
     })
   // Otherwise, bug out with an error
-    .catch(err => {
-      console.log('NOT_FOUND');
-      //   console.log(req);
-      res.status = 404;
+    .catch( () => {
+      res.statusCode = 400;
       res.statusMessage = 'Not Found';
-      // res.write(`Resource Not Found (${req.url.pathname})`);
-      res.write(`CATCH: Resource Not Found`);
+      res.write(`Resource Not Found (${req.parsed.pathname})`);
       res.end();
     });
   

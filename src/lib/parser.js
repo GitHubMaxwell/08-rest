@@ -42,23 +42,25 @@ module.exports = (req) => {
         }
        */
 
-    if(! req.method.match(/POST|PUT/) ) {
-      //if the request method DOESNT equal onf of these methods resolve it with the url and query already being parsed out
-      console.log('CHECKING THE GETs GOING HERE',req.method);
+    if(! req.method.match(/POST|PUT|PATCH/) ) {
       resolve(req);
     }
-    // console.log('BODY before JSON parse', req.body);
+    // console.log('parser.js', req.method);
     let text = '';
   
     req.on('data', (buffer) => {
       text += buffer.toString();
     });
+
+    // req.on('api/v1/max', (buffer) => {
+    //   text += buffer.toString();
+    // });
   
     req.on('end', () => {
       try{
         req.body = JSON.parse(text);
+        // console.log(typeof req.body);
         resolve(req);
-        // console.log('BODY after JSON parse', req.body);
       }
       catch(err) { reject(err); }
     });
