@@ -32,21 +32,24 @@ router.post('/data', (req,res)=>{
 
 router.get('/api/v1/max', (req,res) => {
 
-  if(req.query.id) {
+  
+  if(req.query.id === 'unknown') {
+    res.statusCode = 404;
+    res.write('not found');
+    res.end();
+  }
+  else if(req.query.id) {
     res.statusCode = 200;
     res.statusMessage = req.query.id ? `ID: ${req.query.id}` : 'OK';
     res.write(`ID: ${req.query.id}`);
     res.end();
-  
   // you have to end the res-req cycle or itll keep spinning
-
-  // } else if(!req.query.id){
-  //   res.statusCode = 404;
-  //   res.write('not found');
-  //   res.end();
   } else {
     res.statusCode = 400;
     res.write('bad request');
+    // err.response.text to access this in the 
+    // wont be sent back on the err.message
+    // superagent sets the message to Bad Request when it sees you have set the statusCode to 400
     res.end();
   }
 });
