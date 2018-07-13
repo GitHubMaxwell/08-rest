@@ -8,7 +8,7 @@ describe('URL Parser', () => {
     let req = undefined;
 
     return parser(req)
-      .then( response => false )
+      .then( () => false )
       .catch( err => {
         // console.log('Error',err);
         expect(err).toBeDefined(); 
@@ -18,7 +18,7 @@ describe('URL Parser', () => {
   it('requires a req object with a url', () => {
     let req = {};
     return parser(req)
-      .then( response => false )
+      .then( () => false )
       .catch( err => expect(err).toBeDefined() );
   });
 
@@ -29,7 +29,7 @@ describe('URL Parser', () => {
     let req = { url: 'http://localhost' };
     return parser(req)
       .then( request => expect(typeof request.url).toEqual('object') )
-      .catch( err => false );
+      .catch( () => false );
   });
 
 

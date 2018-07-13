@@ -2,12 +2,14 @@
 ======
 
 
-TRAVIS BADGE: [![Build Status](https://travis-ci.com/GitHubMaxwell/08-rest.svg?branch=master)](https://travis-ci.com/GitHubMaxwell/08-rest)
+TRAVIS BADGE: 
+
 TRAVIS: https://travis-ci.com/GitHubMaxwell/08-rest 
 HEROKU: https://lab08-rest-httpserver.herokuapp.com/ 
+GitHub PR: 
 
 ## README
 
-* start the application server in with nodemon
-* run jest on the two test files to see the passes as well as trying certian query string inputs on the correct localhost address you are running (the port should be 3000 in the env file)
+* start the application server with `npm run watch`
+* run tests with `npm test`
 
