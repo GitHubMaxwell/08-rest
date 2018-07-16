@@ -3,7 +3,7 @@
 let router = require('../../src/lib/router.js');
 
 // console.log(router.get);
-xdescribe('Router', () => {
+describe('Router', () => {
 
   it('registers routes of multiple types', () => {
     router.get('/', () => true);
