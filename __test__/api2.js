@@ -21,9 +21,7 @@ describe('URL Parser', () => {
       .then( () => false )
       .catch( err => expect(err).toBeDefined() );
   });
-
-
-
+  
   it('given a url returns an object', () => {
 
     let req = { url: 'http://localhost' };
@@ -31,8 +29,6 @@ describe('URL Parser', () => {
       .then( request => expect(typeof request.url).toEqual('object') )
       .catch( () => false );
   });
-
-
 
   it('given a complicated url, does all the things', () => {
     let req = { method:'GET', url: 'http://localhost?a=b&c=d' };
